@@ -22,7 +22,7 @@ To run:
    
    b) Run script, I usually comment out the functions for wheel_psth_mvb and FP_sig_spots_mvb for speed. 
    
-   c) The 100 trials data should now be saved in a new folder: CombinedData > "experiment" > "group". To further analyze, load up this .m file and adjust trial window with the variables Tstart and Tfinish (start trial and end trial).
+   c) The 100 trials data should now be saved in a new folder: CombinedData > "experiment" > "group". To further analyze, load up this .m file and adjust trial window with the variables Tstart and Tfinish (start trial and end trial) an re-run FP_psth_mvb in command window.
 
 7. Key Data saved in workspace matrix "ANALYSIS_FINAL":
 
@@ -38,6 +38,6 @@ To run:
    
    f) ResponseWidth: response width in seconds at half max of the greatest absolute peak (positive or negative).
    
-   g) PosITI: Positive ITI peak frequency greater than z-score threshold.
+   g) PosITI: Positive ITI peak frequency greater than z-score threshold. (requires FP_sig_spots_mvb)
 
-   h) NegITI: Negative ITI peak frequency greater than z-score threshold.
+   h) NegITI: Negative ITI peak frequency greater than z-score threshold. (requires FP_sig_spots_mvb)
