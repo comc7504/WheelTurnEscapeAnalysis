@@ -21,16 +21,20 @@ To run:
    
    c) The 100 trials data should now be saved in a new folder: CombinedData > "experiment" > "group". To further analyze, load up this .m file and adjust trial window with the variables Tstart and Tfinish (start trial and end trial).
 
-5. Key Data in workspace matrices:
+5. Key Data saved in workspace matrix "ANALYSIS_FINAL":
 
-   a) ZscoreMeanStress: each animal's mean trace from -5s to +5s from onset/offset from Tstart to Tfinish, normalized dF (z-score).
+   a) rats: subject csv names, dates, etc. This order is conserved across data structures. 
 
-   b) heatmap: mean of all animals normalized dF (z-score) in heatmap form.
+   b) ZscoreMeanStress: each animal's mean trace from -5s to +5s from onset/offset from Tstart to Tfinish, normalized dF (z-score).
 
-   c) dfAUC: each animals area under the curve of mean trace
+   c) AUC: each animals area under the curve of mean trace
 
-   d) dfPeak: each animals greatest absolute peak amplitude; negative (left) and positive (right)
+   d) Peak: each animals greatest absolute peak amplitude; negative (left) and positive (right)
 
-   e) PeakFWHM: response width in seconds at half max of the greatest absolute peak (positive or negative).
+   e) heatmap: mean of all animals normalized dF (z-score) in heatmap form.
+   
+   f) ResponseWidth: response width in seconds at half max of the greatest absolute peak (positive or negative).
+   
+   g) PosITI: Positive ITI peak frequency greater than z-score threshold.
 
-   f) eventcenter(k,8): requires FP_sig_spots_mvb, positive peak frequency (Hz) during ITI.
+   h) NegITI: Negative ITI peak frequency greater than z-score threshold.
