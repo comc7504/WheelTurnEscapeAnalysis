@@ -28,7 +28,7 @@ To run:
 
    a) rats: subject csv names, dates, etc. This order is conserved across data structures. 
 
-   b) ZscoreMeanStress: each animal's mean trace from -5s to +5s of event from Tstart to Tfinish, normalized dF (z-score).
+   b) ZscoreMeanStress: each animal's mean trace from -5s to +5s of event from Tstart to Tfinish, normalized dF (z-score). Time points (x values for graphing purposes) are saved in another workplace matrix called "trig_time".
 
    c) AUC: each animals area under the curve of mean trace
 
