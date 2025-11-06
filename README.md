@@ -18,7 +18,7 @@ To run:
    
 6. Open main_psth_mvb.m, saved in UserFunctions Folder
    
-   a) Set up experiment name, group, and other parameters (run all 100 trials first)
+   a) Set up experiment name (exp), group (gp), and other parameters (run all 100 trials first) if needed. 
    
    b) Run script, I usually comment out the functions for wheel_psth_mvb and FP_sig_spots_mvb for speed. 
    
@@ -34,7 +34,7 @@ To run:
 
    d) Peak: each animals greatest absolute peak amplitude; negative (left) and positive (right)
 
-   e) heatmap: mean of all animals normalized dF (z-score) in heatmap form.
+   e) Heatmap: mean of all animals normalized dF (z-score) in heatmap form.
    
    f) ResponseWidth: response width in seconds at half max of the greatest absolute peak (positive or negative).
    
