@@ -2,11 +2,11 @@
 Analysis pipeline for wheel turn escape photometry recordings
 
 To run:
-1. Download scripts and save in a common folder, e.g. PhotoAnalysis
+1. Download script folders and save in a common folder, e.g. PhotoAnalysis.
    
-3. Add a folder named "csvfiles". Place each group of photometry subjects' .csvs here before analysis. Be sure that csv columns are aligned as follows: time, 405nm signal, 474nm signal, shock TTL signal, wheel turn TTL signal.
+3. Add an additional folder named "csvfiles". Place each group of photometry subjects' .csvs here before analysis. Be sure that csv columns are aligned as follows: time, 405nm signal, 474nm signal, shock TTL signal, wheel turn TTL signal.
    
-5. Make sure matlab has this folder in the path and the Add Ons:
+5. Make sure matlab has all folders in the path and the Add Ons:
    
    a) Signal Processing Toolbox
    
