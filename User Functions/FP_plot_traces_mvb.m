@@ -22,10 +22,10 @@ for k = 1:size(rats,1)
     %405_fit trace
     plot(fp_data{k,1}, fp_data{k,3}, 'Color', violet) 
     
-    %474 trace
+    %465 trace
     plot(fp_data{k,1}, fp_data{k,4}, 'Color', bleu)   
 
-    %dF (474-405_fit) trace
+    %dF (465-405_fit) trace
     plot(fp_data{k,1}, fp_data{k,5}, 'Color', verte)  
 
     %Give max time value during test
@@ -55,12 +55,12 @@ for k = 1:size(rats,1)
     %Labeling
     title('\bf100 Trials','fontsize',18);
     xlabel('Time (min)','fontsize',14);
-    ylabel('474-405\_fit (dF)','fontsize',14);
+    ylabel('465-405\_fit (dF)','fontsize',14);
     set(gca, 'LineWidth', 0.75);
-    legend({'405\_fit', '474', 'dF'}, 'location', 'northeast')
+    legend({'405\_fit', '465', 'dF'}, 'location', 'northeast')
 
     %name the figure and save to rat folder
-    outP = [destfile 'ES_session_405_474_dF']; 
+    outP = [destfile 'ES_session_405_465_dF']; 
     saveFig(gcf, outP, 'fig');
     saveFig(gcf, outP, 'pdf');
 

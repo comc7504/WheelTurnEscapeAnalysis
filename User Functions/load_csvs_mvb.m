@@ -26,16 +26,16 @@ for k = 1:size(rats,1)
     g.FP = g.FP(20:end-50,:);                       %Sometimes last row is a NaN, this delete it
     g.actual_sr = 1/mean(diff(g.FP(:,1)));          %True sampling rate
     [g.b,g.a] = butter(2, 2/(g.actual_sr/2), 'low');%Low-pass 2n filter from Datta (2018), Cell
-    g.f474 = filtfilt(g.b,g.a,g.FP(:,3));           %Apply filter to df/f
+    g.f465 = filtfilt(g.b,g.a,g.FP(:,3));           %Apply filter to df/f
     g.f405 = filtfilt(g.b,g.a,g.FP(:,2));           %Apply filter to df/f
     
     % Downsample to desired rate (ie behavioural camera)
     g.f405 = resample(g.f405, g.FP(:,1), sr);       %resample fxn homogenizes sampling rate 
     g.f405([1:10 end-5:end]) = NaN;                 %easy way to remove artifacts
-    g.f474 = resample(g.f474, g.FP(:,1), sr);    
-    g.f474([1:10 end-5:end]) = NaN;              
+    g.f465 = resample(g.f465, g.FP(:,1), sr);    
+    g.f465([1:10 end-5:end]) = NaN;              
     g.shk_chan = resample(g.FP(:,4), g.FP(:,1), sr);     % Downsample, FP(:,4) must be shocks
-    g.time = linspace(0, (size(g.f474,1)/sr),size(g.f474,1))'; 
+    g.time = linspace(0, (size(g.f465,1)/sr),size(g.f465,1))'; 
     [g.ES, g.ESlog] = esPeriods(g.shk_chan);      %fxn has start, duration, stop in frames
     g.ESsec = g.ES./sr;                           %Change from frames to sec
     g.wheel = resample(g.FP(:,5), g.FP(:,1), sr);      %Downsample FP(:,5) must be wheel turn
@@ -43,12 +43,12 @@ for k = 1:size(rats,1)
  
     
     % Fit control channel to signal channel
-    g.idx = ~isnan(g.f405) | ~isnan(g.f474);        %omit NaNs from artifacts for polyfit
-    g.fit_vals = polyfit(g.f405(g.idx), g.f474(g.idx), 1);
+    g.idx = ~isnan(g.f405) | ~isnan(g.f465);        %omit NaNs from artifacts for polyfit
+    g.fit_vals = polyfit(g.f405(g.idx), g.f465(g.idx), 1);
     g.f405_fit = g.fit_vals(1).*g.f405 + g.fit_vals(2);
-    g.dF = g.f474 - g.f405_fit;
+    g.dF = g.f465 - g.f405_fit;
     g.logdF=log(g.dF);
-    %dFF = (g.f474 - g.f405_fit)./g.f405_fit; % Option for df/f
+    %dFF = (g.f465 - g.f405_fit)./g.f405_fit; % Option for df/f
 
     %Logical 1/4 wheel turn instances based on changing TTL
     for i = 1:(length(g.wheel)-1)
@@ -61,9 +61,9 @@ for k = 1:size(rats,1)
     % Put rat data in combined file
     fp_data(k,1) = {g.time};    %Time (sec)
     fp_data(k,2) = {g.f405};    %filtered 405nm signal
-    fp_data(k,3) = {g.f405_fit};%filtered 405nm signal fit to 474nm signal
-    fp_data(k,4) = {g.f474};    %filtered 474nm signal
-    fp_data(k,5) = {g.dF};      %dF of 405nm signal fit to 474nm signal
+    fp_data(k,3) = {g.f405_fit};%filtered 405nm signal fit to 465nm signal
+    fp_data(k,4) = {g.f465};    %filtered 465nm signal
+    fp_data(k,5) = {g.dF};      %dF of 405nm signal fit to 465nm signal
     fp_data(k,6) = {g.shk_chan};%TTL of shock on or off 
     fp_data(k,7) = {g.ESlog};   %Logical of when ES is on or off
     fp_data(k,8) = {g.ES};      %Frame of ES start, duration, and end
@@ -73,9 +73,9 @@ for k = 1:size(rats,1)
     fp_data(k,12)= {g.wheel};   %Downsampled wheel turn 1/4
     fp_data(k,13)= {g.wStress}; %wheel epoch frames stress
     fp_data(k,14)= {g.wStress/sr}; %wheel epoch seconds stress
-    fp_data(k,15)= {g.wITI}; %wheel epoch frames iti
-    fp_data(k,16)= {g.wlog}; %Wheel turn logic
-    fp_data(k,17)= {g.wEvents/sr}; %Wheel turn bouts in seconds
+    fp_data(k,15)= {g.wITI}; %wheel epoch fram
+    fp_data(k,17)= {g.wEvents/sr}; %Wheel turn boutes iti
+    fp_data(k,16)= {g.wlog}; %Wheel turn logics in seconds
 
     save(strcat(destfile,separator,rat_num), '-struct', 'g') %Does not save heavy FP csv file
     %save(destfile, '-struct', 'g', '-v7.3') %saves heavy un-downsampled FP

@@ -66,7 +66,7 @@ function [anStress,setZscoreMean,trig_time,andFAUC,dfPeak,heattt,tHalfRise,peakF
             %Display individual traces
             findpeaks(setZscoreMean(k,:),'MinPeakDistance', window-1);
             xlabel('Frames','fontsize',14);
-            ylabel('474-405\_fit (dF)','fontsize',14);
+            ylabel('465-405\_fit (dF)','fontsize',14);
             title('\bfPeaks','fontsize',18);
             pause(1);
            

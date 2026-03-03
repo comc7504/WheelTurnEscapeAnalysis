@@ -1,8 +1,8 @@
 %Final/important end values found in "ANALYSIS_FINAL" :)
 
 clear
-exp = 'PL Hsyn';            % Define experiment / folder for results
-gp = 'ES';                     % Define analysis group
+exp = 'MDT-PL';            % Define experiment / folder for results
+gp = 'mCh';                     % Define analysis group
 
 sr = 30;                        % Set your down-sampling rate, frames per second (39 to match camera)
 win = 5*sr;                     % Frames before and after event (not the sum of b&after)
